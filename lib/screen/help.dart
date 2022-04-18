@@ -219,6 +219,23 @@ class _HelpInfoState extends State<HelpInfo> {
                               const TextSpan(text: ' words.'),
                             ]),
                       ),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                            side: BorderSide(color: colors[400]!)),
+                        onPressed: () => Navigator.pop(context),
+                        child: Text(
+                          "Go back",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: themeProvider.darkMode ? white : black,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        // icon: Icon(
+                        //   Icons.keyboard_arrow_left,
+                        //   color: themeProvider.darkMode ? white : black,
+                        // ),
+                      ),
                       const SizedBox(
                         height: 32,
                       ),

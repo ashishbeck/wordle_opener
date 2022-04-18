@@ -23,7 +23,7 @@ class _KeyboardState extends State<Keyboard> {
       child: Column(
         children: keys
             .map((e) => Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: e
                       .split("")
                       .map((e) => Flexible(
@@ -67,25 +67,25 @@ class _KeyTileState extends State<KeyTile> {
           size: 16,
         );
       }
-      return Text(
-        value == "[" ? "ENTER" : value.toUpperCase(),
-        style: TextStyle(
-            fontWeight: FontWeight.w700,
-            color: themeProvider.darkMode ? white : black),
-        textAlign: TextAlign.center,
+      return FittedBox(
+        child: Text(
+          value == "[" ? "ENTER" : value.toUpperCase(),
+          style: TextStyle(
+              fontWeight: FontWeight.w700,
+              color: themeProvider.darkMode ? white : black),
+          textAlign: TextAlign.center,
+        ),
       );
     }
 
     return value == " "
-        ? Container(
-            width: 18,
-          )
+        ? Container()
         : MouseRegion(
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
               onTap: () => widget.onPressed(value),
               child: Container(
-                margin: const EdgeInsets.all(2),
+                margin: const EdgeInsets.all(3),
                 constraints: BoxConstraints(
                   maxWidth: value == "[" || value == "]" ? 70 : 43,
                   maxHeight: 58,

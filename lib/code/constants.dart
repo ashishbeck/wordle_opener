@@ -8,7 +8,7 @@ DateTime startDate = DateTime(
 );
 List<String> keys = ["qwertyuiop", " asdfghjkl ", "[zxcvbnm]"];
 int notificationFade = 200;
-int notificationDisplay = 1000;
+int notificationDisplay = 3000;
 
 MaterialColor lightColors = const MaterialColor(0xffd3d6da, {
   100: Color(0xff000000),

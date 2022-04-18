@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:wordle_opener/code/constants.dart';
 import 'package:wordle_opener/code/providers.dart';
+import 'package:wordle_opener/code/storage.dart';
 import 'package:wordle_opener/code/words.dart';
 import 'package:wordle_opener/screen/help.dart';
 import 'package:wordle_opener/screen/keyboard.dart';
@@ -111,11 +112,22 @@ class _GamePageState extends State<GamePage> {
     }
   }
 
+  showHelp() async {
+    if (storageService.seenHelp ?? false) {
+      return;
+    }
+    await Future.delayed(const Duration(milliseconds: 500));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const HelpInfo()));
+    storageService.updateSeenHelp();
+  }
+
   @override
   void initState() {
     super.initState();
     getTodayWord();
     getCompletedWordList();
+    showHelp();
   }
 
   @override
@@ -183,10 +195,13 @@ class _GamePageState extends State<GamePage> {
                   children: tiles.map((e) => Flexible(child: e)).toList(),
                 ),
                 const Spacer(),
-                Keyboard(
-                  onPressed: (val) {
-                    onTyped(val.toUpperCase());
-                  },
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Keyboard(
+                    onPressed: (val) {
+                      onTyped(val.toUpperCase());
+                    },
+                  ),
                 ),
               ],
             ),

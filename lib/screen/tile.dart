@@ -110,13 +110,16 @@ class _TextTileState extends State<TextTile> with TickerProviderStateMixin {
                 ),
                 child: AspectRatio(
                   aspectRatio: 1,
-                  child: Center(
-                      child: Text(
-                    widget.value ?? "",
-                    style: Theme.of(context).textTheme.headline5!.copyWith(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 28,
-                        color: newColor ? white : colors[100]!),
+                  child: FittedBox(
+                      child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      widget.value ?? "",
+                      style: Theme.of(context).textTheme.headline5!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          // fontSize: 12,
+                          color: newColor ? white : colors[100]!),
+                    ),
                   )),
                 ),
               ),
