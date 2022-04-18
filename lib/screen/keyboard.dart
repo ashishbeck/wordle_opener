@@ -85,7 +85,7 @@ class _KeyTileState extends State<KeyTile> {
             child: GestureDetector(
               onTap: () => widget.onPressed(value),
               child: Container(
-                margin: const EdgeInsets.all(3),
+                margin: const EdgeInsets.all(2),
                 constraints: BoxConstraints(
                   maxWidth: value == "[" || value == "]" ? 70 : 43,
                   maxHeight: 58,
